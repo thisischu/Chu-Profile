@@ -1,0 +1,314 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.containers {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    text-align: left;
+    font-size: 40px;
+
+}
+
+/* Change home background here!!! */
+
+header {
+    background-image: url('images/background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #000000;
+    text-align: center;
+    padding: 150px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+section {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+/* Home buttons */
+
+.button {
+    text-decoration: none;
+    --b: 3px;   /* border thickness */
+    --s: .15em; /* size of the corner */
+    --c: #BD5532;
+    
+    padding: calc(.05em + var(--s)) calc(.3em + var(--s));
+    color: var(--c);
+    --_p: var(--s);
+    background:
+      conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
+      var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .2em;
+  }
+  .button:hover,
+  .button:focus-visible{
+    --_p: 0px;
+    outline-color: var(--c);
+    outline-offset: .05em;
+  }
+  .button:active {
+    background: var(--c);
+    color: #fff;
+  }
+  
+  .button {
+    font-family: system-ui, sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    cursor: pointer;
+    border: none;
+    margin: .1em;
+  }
+/* button end */
+
+/* project cards
+/* article { */
+    /* --img-scale: 1.001;
+    --title-color: black;
+    --link-icon-translate: -20px;
+    --link-icon-opacity: 0;
+    position: relative; */
+    /* border-radius: 16px; */
+    /* box-shadow: none;
+    background: #fff;
+    transform-origin: center;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+  } */
+/*   
+  article a::after {
+    position: absolute;
+    inset-block: 0;
+    inset-inline: 0;
+    cursor: pointer;
+    content: "";
+  } */
+  
+  /* basic article elements styling */
+  article h2 {
+    margin: 0 0 18px 0;
+    font-family: "Bebas Neue", cursive;
+    font-size: 1.9rem;
+    letter-spacing: 0.06em;
+    color: var(--title-color);
+    transition: color 0.3s ease-out;
+  }
+  
+  figure {
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  
+  article img {
+    height: 200px;
+    width: 350px;
+    object-fit: cover;
+    max-width: 100%;
+    transform-origin: center;
+    transform: scale(var(--img-scale));
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .article-body {
+    padding: 24px;
+  }
+  
+  article a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #28666e;
+  }
+  
+  article a:focus {
+    outline: 1px dotted #28666e;
+  }
+  
+  article a .icon {
+    min-width: 24px;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    transform: translateX(var(--link-icon-translate));
+    opacity: var(--link-icon-opacity);
+    transition: all 0.3s;
+  }
+  
+  /* using the has() relational pseudo selector to update our custom properties */
+  /* article:has(:hover, :focus) {
+    --img-scale: 1.1;
+    --title-color: #28666e;
+    --link-icon-translate: 0;
+    --link-icon-opacity: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+   */
+  
+  /************************ 
+  Generic layout (demo looks)
+  **************************/
+/*   
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+   */
+
+  .articles {
+    display: grid;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    article {
+      container: card/inline-size;
+    }
+    .article-body p {
+      display: none;
+    }
+  }
+  
+  @container card (min-width: 380px) {
+    .article-wrapper {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+    }
+    .article-body {
+      padding-left: 0;
+    }
+    figure {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    figure img {
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+  
+  .sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  } */
+/* project cards end */
+
+
+/* contacts section */
+
+#projects{
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#contact{
+    background-color: lightgray;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    
+}
+
+.project img {
+    max-width: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+
+.article-btn {
+    transition: all .5s ease;
+    color: #000000;
+    border: 3px solid rgb(0, 0, 0);
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 15px;
+    background-color : transparent;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+.article-btn:hover {
+    color: #001F3F;
+    background-color: #fff;
+}
+  
+.links{
+    padding-top: 20px;
+}
+
+#contact img {
+    height: 50px;
+    width: 50px;
+}
+.icon-images {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+}
